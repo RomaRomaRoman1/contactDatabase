@@ -3,7 +3,7 @@ package org.example;
 public class ContactDatabase {
     String name;
     String lastName;
-    int phoneNumber;
+    String phoneNumber;
     String email;
 
     public String getName() {
@@ -22,11 +22,11 @@ public class ContactDatabase {
         this.lastName = lastName;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

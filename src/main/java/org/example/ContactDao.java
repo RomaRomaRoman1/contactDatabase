@@ -16,7 +16,7 @@ public class ContactDao {
               () -> System.out.println("Контакт " + lastname + " не найден..."));
       return result;
     }
-    public List<ContactDatabase> addToContactDaoList (String name, String lastName, int phoneNumber, String email) {
+    public List<ContactDatabase> addToContactDaoList (String name, String lastName, String phoneNumber, String email) {
         ContactDatabase contactDatabase = new ContactDatabase();
         contactDatabase.setPhoneNumber(phoneNumber);
         contactDatabase.setName(name);
@@ -28,7 +28,7 @@ public class ContactDao {
     public List<ContactDatabase> allContactDataBase() {
         return contactDatabaseList;
     }
-    public Optional<ContactDatabase> changeContactDatabase (String lastName, int newPhoneNumber) {
+    public Optional<ContactDatabase> changeContactDatabase (String lastName, String newPhoneNumber) {
         Optional<ContactDatabase> result1 = contactDatabaseList.stream()
                 .filter(contactDatabase -> contactDatabase.getLastName().equals(lastName))
                         .map(contactDatabase -> {contactDatabase.setPhoneNumber(newPhoneNumber);

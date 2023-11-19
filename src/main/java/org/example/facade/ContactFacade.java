@@ -1,6 +1,6 @@
-package facade;
+package org.example.facade;
 
-import controller.ContactDto;
+import org.example.controller.ContactDto;
 import org.example.ContactDao;
 import org.example.ContactDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static org.springframework.core.convert.TypeDescriptor.map;
 @Service
 public class ContactFacade {
     ContactDao contactDao;
@@ -30,14 +29,11 @@ public class ContactFacade {
                 .map(ContactDto::new)
                 .collect(Collectors.toList());
     }
-    public List <ContactDto> addToContactDtoList (String lastName, int phoneNumber){
-        ContactDto contactDto = new ContactDto();
-        contactDto.setNumberPhone(phoneNumber);
-        contactDto.setLastName(lastName);
-        contactDtoList.add(contactDto);
-        return contactDtoList;
+    public List <ContactDto> addToContactDtoList (String name, String lastName, String phoneNumber, String email){
+         return contactDao.addToContactDaoList(name, lastName, phoneNumber, email).stream()
+                 .map(ContactDto::new).collect(Collectors.toList());
     }
-    public Optional<ContactDto> changeContactDtoList (String lastName, int phoneNumber) {
+    public Optional<ContactDto> changeContactDtoList (String lastName, String phoneNumber) {
     Optional<ContactDto> contactDto1= contactDao.changeContactDatabase(lastName, phoneNumber)
             .map(ContactDto::new);
 
